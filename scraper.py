@@ -5,7 +5,7 @@ import smtplib
 
 
 
-# location of product on webiste
+# location of product on website
 URL = "https://www.amazon.in/dp/B07XG2KHCN/ref=pc_mcnc_merchandised-search-16_?pf_rd_s=merchandised-search-16&pf_rd_t=Gateway&pf_rd_i=mobile&pf_rd_m=A1VBAL9TL5WCBF&pf_rd_r=X7DDT9VBESFJM7KP0X84&pf_rd_p=d736bd91-d2f4-4e41-b555-380e3a96f61f"
 
 # Contains information about web browser
@@ -45,7 +45,7 @@ def send_mail():
 
     server.sendmail(
         'r.madhur000@gmail.com',
-        'madhur_r@ph.iitr.ac.in@gmail.com',
+        'madhur_r@ph.iitr.ac.in',
         msg
     )
     server.quit()
