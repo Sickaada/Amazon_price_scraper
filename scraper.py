@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import smtplib
+import time
 
 
 
@@ -13,7 +14,13 @@ URL = "https://www.amazon.in/dp/B07XG2KHCN/ref=pc_mcnc_merchandised-search-16_?p
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36"}
 
 def check_price():
-    page = requests.get(URL, headers = headers)
+   while True:
+        try:
+            page = requests.get(URL, headers = headers)
+            time.sleep(3)
+        except:
+            continue
+    
     soup = BeautifulSoup(page.content, "html.parser")
 
     title = soup.find(id = "productTitle").get_text()
@@ -31,7 +38,7 @@ def check_price():
 def send_mail():
 # Creating a connection with gmail
     server = smtplib.SMTP('smtp.gmail.com',25)
-    server.connect('smtp.gmail.com',465)
+    server.connect('smtp.gmail.com',443)
 # ehlo command - sent by one email server to another to indentify itself to create connection
     server.ehlo()   
 # encrypting our connection
